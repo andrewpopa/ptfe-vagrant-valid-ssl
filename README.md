@@ -119,36 +119,109 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 ```
 
-## configure nginx
+## copy certificates 
 
-create an `index.html` file
-
-`echo "index" > /var/www/html/index.html`
-
-substitute `example.com` with your domain
-
-`sed -i 's/example.com/your-domain.com/g' example.com.conf`
+copy all certificates to you `vagrant` folder, so you can upload during the installation process later
 
 ```bash
-server {
-    listen 80;
-    listen [::]:80;
-    root /var/www/html;
-    index index.html;
-    server_name  example.com www.ptfe.example.com;
-
-    listen 443 ssl;
-
-    ssl_certificate /etc/letsencrypt/live/ptfe.example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/ptfe.example.com/privkey.pem;
-
-    # Redirect non-https traffic to https
-    if ($scheme != "https") {
-        return 301 https://$host$request_uri;
-    }
-}
+sudo mkdir /vagrant/ssl
+sudo cp /etc/letsencrypt/live/ptfe.gabrielaelena.me/*.pem /vagrant/ssl
 ```
 
-## check your valid certificate
+## execute the installer
 
-![alt text](img/padlock.png "Let's Encrypt certificate")
+run the installation script after login to vagrant box
+
+```bash 
+curl https://install.terraform.io/ptfe/stable | sudo bash
+```
+## specify lan network
+
+choose the interface with the lan ip `192.168.56.20`
+
+```bash
+Determining local address
+The installer was unable to automatically detect the private IP address of this machine.
+Please choose one of the following network interfaces:
+[0] enp0s3	10.0.2.15
+[1] enp0s8	192.168.50.20
+[2] docker0	172.17.0.1
+Enter desired number (0-2): 1
+```
+
+This is where command line configuration end. The rest of configuration is need to be done via web interface.
+
+## go to web browser
+
+after the cli installation is done continue with web browser as it suggested
+
+```bash
+To continue the installation, visit the following URL in your browser:
+
+  http://<this_server_address>:8800
+```
+
+you may have the following issue with accessing `https`. 
+
+click on `Accept the Risk and Continue`
+
+![alt text](img/ssl_risk.png "SSL problem")
+
+## use fqdn name for configuration
+
+- set fqdn for this installation, use `https://ptfe.gabrielaelena.me:8800` in my case
+- upload private key `privkey.pem`
+- upload certificate `fullchain.pem`
+
+![alt text](img/config.png "DNS and Self Signed Certificate")
+
+## upload license provided by HashiCorp
+
+- click on choose license
+- choose your file with licence from your pc
+
+![alt text](img/lic.png "Lic file")
+
+## choose installation mode
+
+- click on online
+- click on continue
+
+
+![alt text](img/install_mode.png "Installation mode")
+
+## secure admin console
+
+- write a password for the replicated console
+> we will use this password later
+
+![alt text](img/pwd.png "Create password")
+
+## review preflight checks
+
+- preflight should be all green
+- click on continue
+
+![alt text](img/preflight.png "Preflight checks")
+
+## encryption password and installation mode - demo in our case
+
+add password for encryption, choose **Demo** mode of installation and don't forget to click **Save** and the end of the page (this information is not in screenshot :) )
+
+![alt text](img/mode.png "Encryption password and installation mode")
+
+## loading the configuration
+
+wait until all components will be loaded
+
+![alt text](img/loading.png "Create snapshot via UI")
+
+## Done
+
+after loading of all components is done, you may open PTFE application and create new user.
+
+please note that `padlock` is closed and we do have **Valid** certificate
+
+![alt text](img/ptfe.png "PTFE")
+
+Enjoy
