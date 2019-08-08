@@ -6,7 +6,8 @@ This repo provide an example of PTFE installation with FQDN and valid Letsencryp
 - install [git](https://git-scm.com/downloads)
 - have an account on [cloudflare](https://www.cloudflare.com/) with DNS zones
 - install [vagrant](https://www.vagrantup.com/docs/installation/)
-- [ptfe](https://www.terraform.io/docs/enterprise/index.html)
+- [TFE](https://www.terraform.io/docs/enterprise/index.html)
+- TFE License file (provided by HashiCorp)
 
 # Description
 - [vagrant box](#vagrant-box)
