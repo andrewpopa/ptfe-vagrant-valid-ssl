@@ -130,7 +130,6 @@ substitute `example.com` with your domain
 `sed -i 's/example.com/your-domain.com/g' example.com.conf`
 
 ```bash
-cat ptfe.example.com.conf
 server {
     listen 80;
     listen [::]:80;
