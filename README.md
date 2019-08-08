@@ -1,6 +1,13 @@
 # ptfe-vagrant-valid-ssl
 This repo provide an example of PTFE installation with FQDN and valid Letsencrypt certificate
 
+# Prerequirements
+
+- install [git](https://git-scm.com/downloads)
+- have an account on [cloudflare](https://www.cloudflare.com/) with DNS zones
+- install [vagrant](https://www.vagrantup.com/docs/installation/)
+- [ptfe](https://www.terraform.io/docs/enterprise/index.html)
+
 # Description
 - [vagrant box](#vagrant-box)
   - 4gb ram
