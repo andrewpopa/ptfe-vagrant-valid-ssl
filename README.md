@@ -7,7 +7,6 @@ This repo provide an example of PTFE installation with FQDN and valid Letsencryp
   - preferable ubuntu OS
 - DNS record for PTFE registered domain name (out case: ptfe.gabrielaelena.me) managed by [cloudflare.com](https://www.cloudflare.com/)
 - get letsencrypt certificate
-- configure nginx with certificate
 
 ## vagrant box usage
 
@@ -44,12 +43,10 @@ dns_cloudflare_api_key = api-token-from-your-account
 
 ## install dependencies
 
-- install nginx
 - install pip
 - install cloudflare plugin for certbot
 
 ```bash
-sudo apt-get install nginx
 sudo apt-get install certbot
 sudo apt-get install python-pip
 sudo pip install certbot-dns-cloudflare
