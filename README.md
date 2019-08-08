@@ -1,5 +1,5 @@
 # ptfe-vagrant-valid-ssl
-This repo provide an example of nginx configuration with FQDN and valid Letsencrypt certificate
+This repo provide an example of PTFE installation with FQDN and valid Letsencrypt certificate
 
 # Description
 - [vagrant box](#vagrant-box)
