@@ -169,6 +169,7 @@ click on `Accept the Risk and Continue`
 - set fqdn for this installation, use `https://ptfe.gabrielaelena.me:8800` in my case
 - upload private key `privkey.pem`
 - upload certificate `fullchain.pem`
+- click - `Upload & Continue`
 
 ![alt text](img/config.png "DNS and Self Signed Certificate")
 
